@@ -1,0 +1,173 @@
+/* 
+    Created on : 29/09/2020, 12:07:42 PM
+    Author     : Julian Garcia Ortiz
+*/
+
+html{
+    background: url("../resources/background.jpg") no-repeat;
+    background-size: cover;
+    min-height: 90%;
+}
+
+
+body{
+    background:none;
+    font-size: 1.2em;
+}
+
+#advanced-search-form{
+    background-color: #fff;
+    margin: 2em auto auto 2em;
+    padding: 0.5em;
+    color: rgb(240 0 0);
+    box-shadow: 6px 6px 6px rgba(240,0,0,0.3);
+    border-radius: 25px;
+    width: 50%;
+}
+
+#advanced-search-form h2,img{
+    display:inline-block;
+    padding-bottom: 5px;
+    margin: 20px 20px;
+    font-size: 1.2em;
+}
+
+#advanced-search-form hr{
+    margin-top: 20px;
+    margin-bottom: 30px;
+    margin-left:3px;
+    border: 1px solid #cccccc;
+}
+
+#advanced-search-form .form-group{
+    margin-bottom: 4px;
+    margin-left: 20px;
+    margin-right: 4px;
+    float: left;
+    text-align: left;
+    width: 90%;
+}
+
+table{
+    width: -webkit-fill-available;
+}
+.table.td{
+    margin-left: 7px;
+    margin-right: 20px;
+    width: -webkit-fill-available;
+}
+
+#advanced-search-form td.form-group{
+    margin-bottom: 4px;
+    margin-left: 20px;
+    margin-right: 5px;
+    float: left;
+    text-align: left;
+    width: 90%;
+}
+
+#advanced-search-form td.form-caption{
+    padding-left: 10px;
+    padding-bottom: 12px;
+    text-align: left;
+    width: 10%;
+    font-weight: bold;
+}
+
+#advanced-search-form .form-control{
+    padding: 5px 5px;
+    margin-bottom: 12px;
+    margin-left: 10px;
+    width: 90%;
+    height: auto;
+    font-size: 1.1em;
+    color: rgb(180, 0, 0);
+    box-shadow: 1px 1px 5px rgba(240,0,0,0.5);
+}
+
+#advanced-search-form .radio-control{
+    display: inline-block;
+    text-align: center;
+    font-weight: bold;
+    padding: 5px 5px;
+    margin-bottom: 12px;
+    margin-left: 10px;
+    width: 90%;
+    height: auto;
+    color: rgb(180, 0, 0);
+    box-shadow: 1px 1px 5px rgba(240,0,0,0.5);
+}
+
+#advanced-search-form .radio-inline{
+    margin-left: 7px;
+    margin-right: 20px;
+    -ms-transform: scale(1.5); /* IE 9 */
+    -webkit-transform: scale(1.5); /* Chrome, Safari, Opera */
+    transform: scale(1.5);
+
+}
+
+#advanced-search-form .gender{
+    width: 30%;
+    margin-top: 30px;
+    padding-left: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+#advanced-search-form .boton{
+    width: 30%;
+    margin: 0.5em 0.5em 1em 0.5em;
+    font-size: 1.0em;
+    outline: none;
+    width: auto;
+    justify-content: center;
+}
+
+#advanced-search-form .btn{
+    width: 60%;
+    margin: 0.5em auto 1.0em;
+    display: block;
+    outline: none;
+    font-size: 1.0em;
+}
+
+#advanced-search-form .form-url{
+    padding: 10px;
+    font-size: calc(80%);
+    float: left;
+    color: rgb(180, 0, 0);
+    display: block;
+    /*
+    display: inherit;
+    white-space: normal;
+    padding-right: 10px;
+    */
+}
+
+
+@media screen and (max-width: 900px){
+    #advanced-search-form{
+        width: 95%;
+        margin-left: 10px;
+        margin-right: 5px;
+
+    }
+}
+
+@media screen and (max-width: 1000px){
+    #advanced-search-form{
+        margin-top: 0.3em;
+    }
+}
+
+@media screen and (max-width: 500px){
+    #advanced-search-form .form-group{
+        width: 95%;
+        margin-top: 0.05em;
+    }
+
+    #advanced-search-form h2{
+        text-align: center;
+    }
+}
