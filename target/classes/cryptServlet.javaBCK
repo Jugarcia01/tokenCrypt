@@ -1,0 +1,144 @@
+package co.com.claro.tokencrypt.web.controlServlets;
+
+import co.com.claro.tokencrypt.web.models.EncryptDecrypt;
+import java.io.IOException;
+import java.io.PrintWriter;
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.*;
+
+/**
+ * @author Julian Garcia Ortiz
+ */
+@WebServlet("/cryptServlet")
+public class cryptServlet extends HttpServlet {
+
+    @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+//        resp.setContentType("text/html;charset=UTF-8");
+//        PrintWriter out = resp.getWriter();
+//        out.println("Servlet funcionando correctamente!.");
+
+
+//        // Se indica al browser que no guarde en cache.
+//        resp.setHeader("Pragma", "no-cache");
+//        resp.setHeader("Cache-Control", "no-store");
+//        resp.setDateHeader("Expires", 1);
+//
+//        // Se obtienen y procesan los parametros del formulario
+//        String txtForCrypt = req.getParameter("txtForCrypt");
+//        String serial = req.getParameter("serial");
+//        String activityId = req.getParameter("activityId");
+//        String user = req.getParameter("user");
+//        String key = req.getParameter("key");
+//        String txtCrypt = req.getParameter("txtCrypt");
+//        String longClave = req.getParameter("longClave");
+//        String modoCifrado = req.getParameter("modoCifrado");
+//        String url = req.getParameter("url");
+//        System.out.println("txtForCrypt: " + txtForCrypt);
+//        System.out.println("user: " + user);
+//        System.out.println("key: " + key);
+//
+//        // Se crean los JavaBeans necesarios
+//        EncryptDecrypt objEnc = new EncryptDecrypt(txtForCrypt, user, key, longClave, modoCifrado);
+//        objEnc.getTxtForCryptJoin();
+//        
+//        // Se agregan los JavaBeans a los alcances requeridos
+//        req.setAttribute("mensaje", "Procesando informacion del servlet...");
+//        
+//        HttpSession sesion = req.getSession();
+//        sesion.setAttribute("objetoEncDec", objEnc);
+//        
+//        // Se redirecciona información a la vista seleccionada
+//        RequestDispatcher rd = req.getRequestDispatcher("views/desplegarVariables.jsp");
+//        rd.forward(req, resp);
+        
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        
+        // Se indica al browser que no guarde en cache.
+        resp.setHeader("Pragma", "no-cache");
+        resp.setHeader("Cache-Control", "no-store");
+        resp.setDateHeader("Expires", 1);
+
+        // Se obtienen y procesan los parametros del formulario
+        String txtForCrypt = req.getParameter("txtForCrypt");
+        String serial = req.getParameter("serial");
+        String activityId = req.getParameter("activityId");
+        String user = req.getParameter("user");
+        String key = req.getParameter("key");
+        String txtCrypt = req.getParameter("txtCrypt");
+        String longClave = req.getParameter("longClave");
+        String modoCifrado = req.getParameter("modoCifrado");
+        String url = req.getParameter("url");
+        System.out.println("txtForCrypt: " + txtForCrypt);
+        System.out.println("user: " + user);
+        System.out.println("key: " + key);
+
+        // Se crean los JavaBeans necesarios
+        EncryptDecrypt objEnc = new EncryptDecrypt(txtForCrypt, serial, activityId, user, key, txtCrypt, longClave, modoCifrado, url);
+        objEnc.getTxtForCryptJoin();
+        
+        txtCrypt = objEnc.cifraCampos();
+        url = objEnc.cifraTexto();
+
+        objEnc.setTxtCrypt(txtCrypt);
+        objEnc.setUrl(url);
+        
+        // Se agregan los JavaBeans a los alcances requeridos
+        req.setAttribute("mensaje", "Procesando informacion del servlet...");
+        
+        HttpSession sesion = req.getSession();
+        sesion.setAttribute("objetoEncDec", objEnc);
+        
+        // Se redirecciona información a la vista seleccionada
+//        RequestDispatcher rd = req.getRequestDispatcher("views/desplegarVariables.jsp");
+        RequestDispatcher rd = req.getRequestDispatcher("index.jsp");
+
+        rd.forward(req, resp);
+        
+        
+        
+//        // Tipo de respuesta hacia el browser
+//        //resp.setContentType("text/html");
+//        //resp.setHeader("sendRedirect", "url");
+//
+//        // Se indica al browser que no guarde en cache.
+//        resp.setHeader("Pragma", "no-cache");
+//        resp.setHeader("Cache-Control", "no-store");
+//        resp.setDateHeader("Expires", 1);
+//
+//        // Se obtienen y procesan los parametros del formulario
+//        String txtForCrypt = req.getParameter("txtForCrypt");
+//        String serial = req.getParameter("serial");
+//        String activityId = req.getParameter("activityId");
+//        String user = req.getParameter("user");
+//        String key = req.getParameter("key");
+//        String txtCrypt = req.getParameter("txtCrypt");
+//        String longClave = req.getParameter("longClave");
+//        String modoCifrado = req.getParameter("modoCifrado");
+//        String url = req.getParameter("url");
+//        System.out.println("txtForCrypt: " + txtForCrypt);
+//        System.out.println("user: " + user);
+//        System.out.println("key: " + key);
+//
+//        
+//        // Desplegando la información al navegador del cliente
+//        PrintWriter out = resp.getWriter();
+//        out.print("<html>");
+//        out.print("<body>");
+//        out.print("<br>El texto a encriptar es: " + txtForCrypt);
+//        out.print("<br>El usuario ingresado: " + user);
+//        out.print("<br>El password ingresado: " + key);
+//        out.print("<br>La longitud de Key seleccionado: " + longClave);
+//        out.print("<br>Modo de cifrado seleccionado: " + modoCifrado);
+//        out.print("</body>");
+//        out.print("</html>");
+//        out.close();
+
+    }
+
+}
