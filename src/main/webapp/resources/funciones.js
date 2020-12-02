@@ -189,7 +189,7 @@ function opcionModoApp(campo) {
             break;
 
         default:
-            log("Debe revisar las opciones de Modo de Aplicación.");
+            //log("Debe revisar las opciones de Modo de Aplicación.");
     }
 
 
@@ -229,7 +229,7 @@ function opcionModoApp(campo) {
                 elemT1a.style.display = 'block';
                 document.getElementById("url2-Fila").hidden = true; //Se oculta fila elemento URL2
             default:
-                log("Debe revisar las opciones.");
+                
         }
     }
 }

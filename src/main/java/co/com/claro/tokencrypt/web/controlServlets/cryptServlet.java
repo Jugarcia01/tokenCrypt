@@ -115,14 +115,14 @@ public class cryptServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        //        resp.setContentType("text/html;charset=UTF-8");
-        //        PrintWriter out = resp.getWriter();
-        //        out.println("Servlet funcionando correctamente!.");
+                resp.setContentType("text/html; charset=UTF-8");
+                PrintWriter out = resp.getWriter();
+                out.println("Servlet funcionando correctamente!.");
 
-        //        // Se indica al browser que no guarde en cache.
-        //        resp.setHeader("Pragma", "no-cache");
-        //        resp.setHeader("Cache-Control", "no-store");
-        //        resp.setDateHeader("Expires", 1);
+                // Se indica al browser que no guarde en cache.
+                resp.setHeader("Pragma", "no-cache");
+                resp.setHeader("Cache-Control", "no-store");
+                resp.setDateHeader("Expires", 1);
         //
         //        // Se obtienen y procesan los parametros del formulario
         //        String txtForCrypt = req.getParameter("txtForCrypt");
@@ -143,14 +143,14 @@ public class cryptServlet extends HttpServlet {
         //        objEnc.getTxtForCryptJoin();
         //        
         //        // Se agregan los JavaBeans a los alcances requeridos
-        //        req.setAttribute("mensaje", "Procesando informacion del servlet...");
+                req.setAttribute("mensaje", "Procesando informacion del servlet...");
         //        
         //        HttpSession sesion = req.getSession();
         //        sesion.setAttribute("objetoEncDec", objEnc);
         //        
         //        // Se redirecciona información a la vista seleccionada
-        //        RequestDispatcher rd = req.getRequestDispatcher("views/desplegarVariables.jsp");
-        //        rd.forward(req, resp);        
+                RequestDispatcher rd = req.getRequestDispatcher("index.jsp");
+                rd.forward(req, resp);        
     }
 
 }
