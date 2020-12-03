@@ -1,0 +1,44 @@
+package co.com.claro.tokencrypt.web.controlServlets;
+
+import java.io.UnsupportedEncodingException;
+import java.security.InvalidAlgorithmParameterException;
+import java.security.InvalidKeyException;
+import java.security.NoSuchAlgorithmException;
+import java.util.Arrays;
+import javax.crypto.*;
+import javax.crypto.spec.*;
+import javax.validation.constraints.NotNull;
+import org.apache.storm.shade.org.apache.commons.codec.binary.Base64;
+
+public class decrypt {
+
+    public static String decrypt(@NotNull String input, @NotNull String key) throws UnsupportedEncodingException, InvalidKeyException {
+        byte[] bytes = Base64.decodeBase64(input);
+        if (bytes.length < 17) {
+            return null;
+        }
+
+        byte[] ivBytes = Arrays.copyOfRange(bytes, 0, 16);
+        byte[] contentBytes = Arrays.copyOfRange(bytes, 16, bytes.length);
+
+        try {
+            Cipher ciper = Cipher.getInstance("AES/EBC/PKCS5Padding");
+
+            SecretKeySpec keySpec = new SecretKeySpec(key.getBytes("UTF-8"), "AES");
+            IvParameterSpec iv = new IvParameterSpec(ivBytes, 0, ciper.getBlockSize());
+
+            ciper.init(Cipher.DECRYPT_MODE, keySpec, iv);
+            return new String(ciper.doFinal(contentBytes));
+        } catch (NoSuchAlgorithmException
+                | NoSuchPaddingException
+                | UnsupportedEncodingException
+                | InvalidAlgorithmParameterException
+                | InvalidKeyException
+                | IllegalBlockSizeException
+                | BadPaddingException ignored) {
+        }
+
+        return null;
+    }
+
+}

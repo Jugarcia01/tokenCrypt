@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>URLtokenCrypt</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link rel="stylesheet" type="text/css" href="resources/estilos.css">
+        <script type="text/javascript" src="resources/funciones.js"></script>    
+    </head>
+    <body>
+        <form name="formCifrado" action="/tokenCrypt/cryptServlet" method="POST"
+              onsubmit="return validaDatos(this)">
+            <input type="hidden" name="datoNoVisible" value="ValorNoVisible"/>
+
+            <table width="300px" id="enfasis-col">
+                <caption>
+                    <h2>Generador URL con Token</h2>
+                </caption>
+
+                <tr>
+                    <td class="col">
+                        Seleccionar tamaño de clave en bits(*):
+                    </td >
+                    <td>
+                        128 bits <input type="radio" name="longClave" id="longClave" value="128" checked=""/>
+                        256 bits <input type="radio" name="longClave" value="256"/>
+                    </td>        
+                </tr>
+                <tr>
+                    <td class="col">
+                        Seleccionar modo de cifrado(*):
+                    </td >
+                    <td>
+                        <select name="modoCifrado" id="modoCifrado" class="default">
+                            <option value="0">ECB</option>
+                            <option value="1">CBC</option>
+                        </select>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col">
+                        Texto a cifrar(*):
+                    </td >
+                    <td>
+                        <textarea class="default" name="txtForCrypt" cols="36" rows="3"
+                                  onfocus="this.select()">Digite el texto a cifrar: serial=SERIAL&activityId=CODIGOACTIVIDAD&user=USUARIO
+                        </textarea>
+                    </td>        
+                </tr>
+                <tr><td><label id="separador"> ............. </label></td></tr>
+                <tr>
+                    <td class="col">Campos del texto a cifrar: </td>
+                </tr>
+                <tr>
+                    <td class="col">Serial: </td>
+                    <td >
+                        <input class="default" type="text" name="serial" id="serial"
+                               value="" onfocus="this.select()"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col">ActivityId: </td>
+                    <td>
+                        <input class="default" type="text" name="activityId" id="activityId"
+                               value="" onfocus="this.select()"/>
+                    </td>
+                </tr>
+                <tr><td><label id="separador"> ............. </label></td></tr>
+                <tr>
+                    <td class="col">Usuario(*): </td>
+                    <td>
+                        <input class="default" type="text" name="user" id="user"
+                               value="Digite el usuario." onfocus="this.select()"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col">Contraseña(*): </td>
+                    <td>
+                        <input class="default" type="password" name="key" id="key"
+                               value="123" onfocus="this.select()"/>
+
+                        <button class="btn btn-primary" type="button" 
+                                onclick="verKey()">Ver Clave</button>
+                    </td>
+                </tr>
+                <tr><td><label id="separador"> ............. </label></td></tr>
+                <tr style="text-align: center">
+                    <td>
+                        <input type="submit" value="Cifrar" class="default"/>
+                    </td>        
+                    <td>
+                        <input type="reset" value="Limpiar" class="default"/>
+                    </td>
+                </tr>
+                <tr><td><label id="separador"> ............. </label></td></tr>
+                <tr>
+                    <td class="col">
+                        Texto Cifrado:
+                    </td>
+                    <td>
+                        <label id="txtDecrypt" onfocus="this.select()">
+                            Aqui verá el texto cifrado.
+                        </label> 
+                    </td>        
+                </tr>
+                <tr>
+                    <td class="col">
+                        URL:
+                    </td >
+                    <td>
+                        <label id="url" onfocus="this.select()">
+                            Aqui verá la URL.
+                        </label> 
+                    </td>        
+                </tr>
+            </table>
+        </form>
+
+
+        <script>
+            function verKey() {
+                var tipo = document.getElementById("key");
+                if (tipo.type == "password") {
+                    tipo.type = "text";
+                } else {
+                    tipo.type = "password";
+                }
+            }
+        </script>
+
+    </body>
+</html>
+
